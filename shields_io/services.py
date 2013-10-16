@@ -8,6 +8,8 @@ three strings (first, second, and color).
     color - a color name, the background behind the second word on the shield
 
 """
+from __future__ import absolute_import, division, print_function, unicode_literals
+
 import os
 import time
 from urllib import quote, urlopen
