@@ -1,4 +1,4 @@
-"""This module contains service definions for Badgr.co.
+"""This module contains service definions for Shields.io.
 
 Service functions should take three strings (first, second, color) and return
 three strings (first, second, and color).

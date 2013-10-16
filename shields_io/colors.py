@@ -1,4 +1,4 @@
-"""This module contains color definitions for Badgr.co, per shielded.
+"""This module contains color definitions for Shields.io, per shielded.
 """
 GREEN = "green"
 YELLOWGREEN = "yellowgreen"
