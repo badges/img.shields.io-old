@@ -29,8 +29,8 @@ def _test(first, second, color):
     return first, second, color
 
 
-def noop(first, second, color):
-    return first, second, color
+def generic(first, second, color):
+    return first[:16], second[:16], color
 
 
 def coveralls(first, second, color):
@@ -105,4 +105,4 @@ services['gittip'] = gittip
 services['travis-ci'] = travis_ci
 
 def get(first):
-    return services.get(first, noop)
+    return services.get(first, generic)

@@ -41,8 +41,8 @@ def transform_and_cache(transform_key, first, second, color):
 # Parse and validate input.
 # =========================
 
-first = path['first'].lower()[:16]
-second = path['second'][:16]
+first = path['first'].lower()
+second = path['second']
 color = qs.get('color', LIGHTGRAY)
 
 if color not in all_colors:
