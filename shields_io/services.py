@@ -78,18 +78,18 @@ def travis_ci(first, second, color):
 
     url = 'https://api.travis-ci.org/repos/%s/branches/master' % quote(second)
     fp = urlopen(url)
-    repos = json.loads(fp.read())
-    if repos:
-        status = repos[0].get('branch.state', 'n/a')
-    else:
-        status = 'n/a'
+    repo = json.loads(fp.read())
+    try:
+        second = repo['branch']['state']
+    except KeyError:
+        second = 'n/a'
 
-    color = { 'passed': RED
-            , 'failed': GREEN
+    color = { 'failed': RED
+            , 'passed': GREEN
             , 'started': YELLOW
              }.get(second, LIGHTGRAY)
 
-    return first, status, color
+    return first, second, color
 
 
 services = {}
