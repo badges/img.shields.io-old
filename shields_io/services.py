@@ -76,26 +76,20 @@ def gittip(first, second, color):
 def travis_ci(first, second, color):
     first = "build"
 
-    url = 'https://api.travis-ci.org/repos?slug=%s' % quote(second)
+    url = 'https://api.travis-ci.org/repos/%s/branches/master' % quote(second)
     fp = urlopen(url)
     repos = json.loads(fp.read())
     if repos:
-        status = repos[0].get('last_build_status', 'n/a')
+        status = repos[0].get('branch.state', 'n/a')
     else:
         status = 'n/a'
 
-    second = { 0: 'passing'
-             , 1: 'failing'
-             , None: 'pending'
-             , 'n/a': 'n/a'
-              }.get(status, 'n/a')
-
-    color = { 'failing': RED
-            , 'passing': GREEN
-            , 'pending': YELLOW
+    color = { 'passed': RED
+            , 'failed': GREEN
+            , 'started': YELLOW
              }.get(second, LIGHTGRAY)
 
-    return first, second, color
+    return first, status, color
 
 
 services = {}
